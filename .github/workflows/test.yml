@@ -1,0 +1,27 @@
+# SPDX-License-Identifier: MIT
+
+name: CI Checks
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - closed
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  spell-check:
+    runs-on: linux
+    steps:
+      - name: Clone This Repo
+        uses: actions/checkout@v2
+      - name: Run spellings check
+        uses: FreeRTOS/CI-CD-Github-Actions/spellings@main
+        with:
+          path: ./
