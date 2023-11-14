@@ -58,3 +58,23 @@ jobs:
     - run: aws iot create-thing  --thing-name cont-arm --region eu-west-1
     - run: aws iot delete-thing  --thing-name cont-arm --region eu-west-1
     - run: sleep 60
+  custom-container-1-test-job-amd64:
+    runs-on: arm-hosted-ubuntu-amd64
+    container: iotmswtest/open-iot-sdk:v1
+    steps:
+    - run: echo "🎉 This job uses runner scale set runners!"
+  custom-container-1-test-job-arm64:
+    runs-on: arm-hosted-ubuntu-arm64
+    container: iotmswtest/open-iot-sdk:v1
+    steps:
+    - run: echo "🎉 This job uses runner scale set runners!"
+  custom-container-2-test-job-amd64:
+    runs-on: arm-hosted-ubuntu-amd64
+    container: 325895621467.dkr.ecr.eu-west-1.amazonaws.com/iotmswtest/open-iot-sdk:v1
+    steps:
+    - run: echo "🎉 This job uses runner scale set runners!"
+  custom-container-2-test-job-arm64:
+    runs-on: arm-hosted-ubuntu-arm64
+    container: 325895621467.dkr.ecr.eu-west-1.amazonaws.com/iotmswtest/open-iot-sdk:v1
+    steps:
+    - run: echo "🎉 This job uses runner scale set runners!"
