@@ -39,7 +39,7 @@ jobs:
     - run: echo "🎉 This job uses runner scale set runners!"
     - run: apt update -y
     - run: apt install curl unzip -y
-    - run: curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
+    - run: curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
     - run: unzip awscliv2.zip
     - run: ./aws/install
     - run: aws iot create-thing  --thing-name cont-amd --region eu-west-1
