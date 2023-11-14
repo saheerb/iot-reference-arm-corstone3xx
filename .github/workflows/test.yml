@@ -34,3 +34,15 @@ jobs:
         uses: FreeRTOS/CI-CD-Github-Actions/spellings@main
         with:
           path: ./
+  container-test-job-amd64:
+    runs-on: arm-hosted-ubuntu-amd64
+    container: ubuntu:latest
+    steps:
+    - run: echo "🎉 This job uses runner scale set runners!"
+    - run: sleep 60
+  container-test-job-arm64:
+    runs-on: arm-hosted-ubuntu-arm64
+    container: ubuntu:latest
+    steps:
+    - run: echo "🎉 This job uses runner scale set runners!"
+    - run: sleep 60
