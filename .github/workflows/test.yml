@@ -16,33 +16,34 @@ on:
   workflow_dispatch:
 
 jobs:
-  spell-check-amd:
+  vm-amd:
     runs-on: arm-hosted-ubuntu-amd64
     steps:
       - name: Clone This Repo
         uses: actions/checkout@v2
-      - name: Run spellings check
-        uses: FreeRTOS/CI-CD-Github-Actions/spellings@main
-        with:
-          path: ./
-  spell-check-arm:
+      - run: aws iot create-thing  --thing-name vm-amd --region eu-west-1
+      - run: aws iot delete-thing  --thing-name vm-amd --region eu-west-1
+  vm-arm:
     runs-on: arm-hosted-ubuntu-arm64
     steps:
       - name: Clone This Repo
         uses: actions/checkout@v2
-      - name: Run spellings check
-        uses: FreeRTOS/CI-CD-Github-Actions/spellings@main
-        with:
-          path: ./
+      - run: echo "🎉 This job uses runner scale set runners!"
+      - run: aws iot create-thing  --thing-name vm-arm --region eu-west-1
+      - run: aws iot delete-thing  --thing-name vm-arm --region eu-west-1
   container-test-job-amd64:
     runs-on: arm-hosted-ubuntu-amd64
     container: ubuntu:latest
     steps:
     - run: echo "🎉 This job uses runner scale set runners!"
+    - run: aws iot create-thing  --thing-name cont-amd --region eu-west-1
+    - run: aws iot delete-thing  --thing-name cont-amd --region eu-west-1
     - run: sleep 60
   container-test-job-arm64:
     runs-on: arm-hosted-ubuntu-arm64
     container: ubuntu:latest
     steps:
     - run: echo "🎉 This job uses runner scale set runners!"
+    - run: aws iot create-thing  --thing-name cont-arm --region eu-west-1
+    - run: aws iot delete-thing  --thing-name cont-arm --region eu-west-1
     - run: sleep 60
