@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: MIT
 
-name: CI Checks
+name: My Checks
 
 on:
   push:
@@ -16,8 +16,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  spell-check:
-    runs-on: linux
+  spell-check-amd:
+    runs-on: arm-hosted-ubuntu-amd64
+    steps:
+      - name: Clone This Repo
+        uses: actions/checkout@v2
+      - name: Run spellings check
+        uses: FreeRTOS/CI-CD-Github-Actions/spellings@main
+        with:
+          path: ./
+  spell-check-arm:
+    runs-on: arm-hosted-ubuntu-arm64
     steps:
       - name: Clone This Repo
         uses: actions/checkout@v2
