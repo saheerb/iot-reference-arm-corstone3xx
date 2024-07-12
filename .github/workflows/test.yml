@@ -16,11 +16,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  # vm-amd:
-  #   runs-on: arm-hosted-ubuntu-amd64
-  #   steps:
-  #     - name: Clone This Repo
-  #       uses: actions/checkout@v2
+  vm-amd:
+    runs-on: arm-hosted-ubuntu-amd64
+    steps:
+      - name: Clone This Repo
+        uses: actions/checkout@v2
   #     - run: aws iot create-thing  --thing-name vm-amd --region eu-west-1
   #     - run: aws iot delete-thing  --thing-name vm-amd --region eu-west-1
   # vm-arm:
